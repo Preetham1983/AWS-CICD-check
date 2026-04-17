@@ -27,8 +27,14 @@ def main() -> None:
     table_name = "users"
     dynamo_ops.create_table(table_name, partition_key="id")
 
-    dynamo_ops.put_item(table_name, {"id": {"S": "1"}, "name": {"S": "Alice"}, "age": {"N": "30"}})
-    dynamo_ops.put_item(table_name, {"id": {"S": "2"}, "name": {"S": "Bob"}, "age": {"N": "25"}})
+    dynamo_ops.put_item(
+        table_name,
+        {"id": {"S": "1"}, "name": {"S": "Alice"}, "age": {"N": "30"}},
+    )
+    dynamo_ops.put_item(
+        table_name,
+        {"id": {"S": "2"}, "name": {"S": "Bob"}, "age": {"N": "25"}},
+    )
 
     print("\nGet item id=1:")
     item = dynamo_ops.get_item(table_name, {"id": {"S": "1"}})
